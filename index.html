@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Password Manager PWA</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#1e1e2f">
+
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" href="icons/icon-192.png">
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #121212;
+            color: #fff;
+            padding: 20px;
+        }
+        h1 { text-align: center; }
+        input, button {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 6px;
+            border: none;
+        }
+        button {
+            background: #3f51b5;
+            color: white;
+            cursor: pointer;
+        }
+        .entry {
+            background: #1e1e2f;
+            padding: 10px;
+            margin-top: 10px;
+            border-radius: 6px;
+        }
+        small { color: #aaa; }
+    </style>
+</head>
+<body>
+
+<h1>🔐 Менеджер паролей</h1>
+
+<h2>Добавить пароль</h2>
+<input id="url" placeholder="URL / сайт">
+<input id="login" placeholder="Логин">
+<input id="password" placeholder="Пароль">
+
+<button onclick="generatePassword()">🎲 Сгенерировать пароль</button>
+<button onclick="addEntry()">➕ Сохранить</button>
+
+<h2>Сохранённые пароли</h2>
+<div id="list"></div>
+
+<script src="app.js"></script>
+
+<script>
+if ("serviceWorker" in navigator) {
+    navigator.serviceWorker.register("service-worker.js");
+}
+</script>
+
+</body>
+</html>
